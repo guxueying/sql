@@ -1,0 +1,6 @@
+1,2,3月的total_call_times之和小于等于20
+select count(*),lost_tag_4_t3 from a_4g_4 where 
+total_call_times_01	+
+total_call_times_02	+
+total_call_times_03<=20
+group by lost_tag_4_t3 ;
