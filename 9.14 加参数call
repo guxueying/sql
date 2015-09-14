@@ -103,3 +103,18 @@ A_4G_4.	TOTAL_CALL_TIMES_05	,
 UNI_06MTH_STREAM.	LOST_TAG_6_T2_4G	
 from A_4G_4,UNI_06MTH_STREAM
 where UNI_06MTH_STREAM.user_id=A_4G_4.user_id;
+
+alter table UNI_05MTH_0914 add tagof_call number;
+alter table UNI_06MTH_0914 add tagof_call number;
+update UNI_05MTH_0914 set tagof_call=0;
+update UNI_06MTH_0914 set tagof_call=0;
+update UNI_05MTH_0914 set tagof_call=1 where 
+join_month_201502=0 and TOTAL_CALL_TIMES_02+
+TOTAL_CALL_TIMES_03+
+TOTAL_CALL_TIMES_04<=20;
+update UNI_06MTH_0914 set tagof_call=1 where 
+join_month_201503=0 and TOTAL_CALL_TIMES_05+
+TOTAL_CALL_TIMES_03+
+TOTAL_CALL_TIMES_04<=20;
+
+
