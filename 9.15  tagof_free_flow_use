@@ -1,0 +1,5 @@
+update uni_06mth_0915 set tagof_free_flow_use=1 where
+FREE_FLOW_USE_201506=-1 and FREE_FLOW_USE_201505=0 and FREE_FLOW_USE_201504=0;
+
+update uni_05mth_0915 set tagof_free_flow_use=1 where
+FREE_FLOW_USE_201505=-1 and FREE_FLOW_USE_201503=0 and FREE_FLOW_USE_201504=0;
