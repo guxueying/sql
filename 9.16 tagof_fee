@@ -1,0 +1,24 @@
+alter table UNI_05MTH_0916 add tagof_debt_fee number;
+alter table UNI_06MTH_0916 add tagof_debt_fee number;
+update UNI_05MTH_0916 set tagof_debt_fee=0;
+update UNI_06MTH_0916 set tagof_debt_fee=0;
+update UNI_05MTH_0916 set tagof_debt_fee=1
+where
+(DEBT_FEE_201502	 =0 and 
+DEBT_FEE_201503	 =0 and 
+DEBT_FEE_201504	 =0 and 
+DEBT_FEE_201505	>1000) or
+(DEBT_FEE_201502	 =0 and 
+DEBT_FEE_201503	 =0 and 
+DEBT_FEE_201504	>1000 and
+DEBT_FEE_201505	 =0);
+update UNI_06MTH_0916 set tagof_debt_fee=1
+where
+(DEBT_FEE_201505	 =0 and 
+DEBT_FEE_201503	 =0 and 
+DEBT_FEE_201504	 =0 and 
+DEBT_FEE_201506	>1000) or
+(DEBT_FEE_201504	 =0 and 
+DEBT_FEE_201503	 =0 and 
+DEBT_FEE_201505	>1000 and
+DEBT_FEE_201506	 =0);
