@@ -1,12 +1,14 @@
-SELECT COUNT(*),ACTION_END_DATE_201502,ACTION_END_DATE_201503,ACTION_END_DATE_201504,ACTION_END_DATE_201505
-FROM A_1_ZHAOCANSHU 
-WHERE lost_tag_5_t2_4g=1
-GROUP BY ACTION_END_DATE_201502,ACTION_END_DATE_201503,ACTION_END_DATE_201504,ACTION_END_DATE_201505;
+select count(*) from a_1_zhaocanshu_6 where lost_tag_6_t2_4g=1;
 
 select count(*),lost_tag_5_t2_4g from A_1_ZHAOCANSHU where 
 ACTION_END_DATE_201502=-1 and ACTION_END_DATE_201503=-1 and 
 ACTION_END_DATE_201504=ACTION_END_DATE_201505 and ACTION_END_DATE_201504!=-1 and ACTION_END_DATE_201505!=-1
 group by lost_tag_5_t2_4g;
+
+select count(*),lost_tag_6_t2_4g from A_1_ZHAOCANSHU_6 where 
+ACTION_END_DATE_201503=-1 and ACTION_END_DATE_201504=-1 and 
+ACTION_END_DATE_201505=ACTION_END_DATE_201506 and ACTION_END_DATE_201505!=-1 and ACTION_END_DATE_201506!=-1
+group by lost_tag_6_t2_4g;
 
 select count(*),lost_tag_5_t2_4g from a_1_zhaocanshu where		
 (case when	MTC_NUM_201502=0	then 1 else 0 end +
@@ -14,6 +16,13 @@ case when	MTC_NUM_201503=0	then 1 else 0 end +
 case when	MTC_NUM_201504=0	then 1 else 0 end +
 case when	MTC_NUM_201505=0	then 1 else 0 end) >=3
 group by lost_tag_5_t2_4g;	
+
+select count(*),lost_tag_6_t2_4g from a_1_zhaocanshu_6 where		
+(case when	MTC_NUM_201506=0	then 1 else 0 end +
+case when	MTC_NUM_201503=0	then 1 else 0 end +
+case when	MTC_NUM_201504=0	then 1 else 0 end +
+case when	MTC_NUM_201505=0	then 1 else 0 end) >=3
+group by lost_tag_6_t2_4g;	
 
 select count(*),lost_tag_5_t2_4g from a_1_zhaocanshu where		
 (DEBT_FEE_201502	 =0 and 
@@ -25,3 +34,14 @@ DEBT_FEE_201503	 =0 and
 DEBT_FEE_201504	>1000 and
 DEBT_FEE_201505	 =0)
 group by lost_tag_5_t2_4g;	
+
+select count(*),lost_tag_6_t2_4g from a_1_zhaocanshu_6 where		
+(DEBT_FEE_201505	 =0 and 
+DEBT_FEE_201503	 =0 and 
+DEBT_FEE_201504	 =0 and 
+DEBT_FEE_201506	>1000) or
+(DEBT_FEE_201503	 =0 and 
+DEBT_FEE_201504 =0 and 
+DEBT_FEE_201505	>1000 and
+DEBT_FEE_201506	 =0)
+group by lost_tag_6_t2_4g;	
