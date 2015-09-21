@@ -45,3 +45,13 @@ DEBT_FEE_201504 =0 and
 DEBT_FEE_201505	>1000 and
 DEBT_FEE_201506	 =0)
 group by lost_tag_6_t2_4g;	
+
+select count(*),lost_tag_6_t2_4g from a_1_zhaocanshu_6
+where MTC_NUM_201503=0 AND MTC_NUM_201504=0 AND
+(CASE WHEN MTC_NUM_201505!=0 THEN 1 ELSE 0 END +
+CASE WHEN MTC_NUM_201506!=0 THEN 1 ELSE 0 END)>=1 GROUP BY lost_tag_6_t2_4g;
+
+select count(*),lost_tag_5_t2_4g from a_1_zhaocanshu
+where MTC_NUM_201503=0 AND MTC_NUM_201502=0 AND
+(CASE WHEN MTC_NUM_201505!=0 THEN 1 ELSE 0 END +
+CASE WHEN MTC_NUM_201504!=0 THEN 1 ELSE 0 END)>=1 GROUP BY lost_tag_5_t2_4g;
